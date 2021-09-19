@@ -9,7 +9,7 @@ metadata:
   name: voting-app-pod
   labels:
     name: voting-app-pod
-    author: intelliqit
+    author: Aquib
 spec:
   containers:
     - name: voting-app
@@ -27,7 +27,7 @@ metadata:
   name: result-app-pod
   labels:
     name: result-app-pod
-    author: intelliqit
+    author: Aquib
 spec:
   containers:
     - name: result-app
@@ -46,7 +46,7 @@ metadata:
   name: worker-app-pod
   labels:
     name: worker-app-pod
-    author: intelliqit
+    author: Aquib
 spec:
   containers:
     - name: worker-app
@@ -62,7 +62,7 @@ metadata:
   name: redis-pod
   labels:
     name: redis-pod
-    author: intelliqit
+    author: Aquib
 spec:
   containers:
    - name: redis
@@ -80,7 +80,7 @@ metadata:
   name: postgres-pod
   labels:
     name: postgres-pod
-    author: intelliqit
+    author: Aquib
 spec:
   containers:
     - name: postgres
@@ -101,7 +101,7 @@ metadata:
   name: redis-service
   labels:
     name: redis-service
-    author: intelliqit
+    author: Aquib
 spec:
   ports:
     - port: 6379
@@ -119,7 +119,7 @@ metadata:
   name: postgres-service
   labels:
     name: postgres-service
-    author: intelliqit
+    author: Aquib
 spec:
   ports:
     - port: 5432
@@ -143,7 +143,7 @@ metadata:
   name: voting-app-service
   labels:
     name: voting-app-service
-    author: intelliqit
+    author: Aquib
 spec:
   type: LoadBalancer
   ports:
@@ -162,7 +162,7 @@ metadata:
   name: result-app-service
   labels:
     name: result-app-service
-    author: intelliqit
+    author: Aquib
 spec:
   type: LoadBalancer
   ports:
