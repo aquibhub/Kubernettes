@@ -1,0 +1,174 @@
+Pod Definition Files
+================================
+vim voting-app-pod.yml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: voting-app-pod
+  labels:
+    name: voting-app-pod
+    author: intelliqit
+spec:
+  containers:
+    - name: voting-app
+      image: dockersamples/examplevotingapp_vote
+      ports:
+        - containerPort: 80
+...
+
+
+vim result-app-pod.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: result-app-pod
+  labels:
+    name: result-app-pod
+    author: intelliqit
+spec:
+  containers:
+    - name: result-app
+      image: dockersamples/examplevotingapp_result
+      ports:
+        - containerPort: 80
+...
+
+
+vim worker-app-pod.yml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker-app-pod
+  labels:
+    name: worker-app-pod
+    author: intelliqit
+spec:
+  containers:
+    - name: worker-app
+      image: dockersamples/examplevotingapp_worker
+...
+
+
+vim redis-pod.yml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+  labels:
+    name: redis-pod
+    author: intelliqit
+spec:
+  containers:
+   - name: redis
+     image: redis
+     ports:
+       - containerPort: 6379
+...
+
+vim postgres-pod.yml
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-pod
+  labels:
+    name: postgres-pod
+    author: intelliqit
+spec:
+  containers:
+    - name: postgres
+      image: postgres
+      ports:
+        - containerPort: 5432
+...
+
+
+============================================================================
+Service Defintion file
+===============================
+vim redis-service.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  labels:
+    name: redis-service
+    author: intelliqit
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    name: redis-pod
+    app: demo-voting-app
+...
+
+vim pod-service.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  labels:
+    name: postgres-service
+    author: intelliqit
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    name: postgres-pod
+    app: demo-voting-app
+...
+
+Note: Since "type" is not specified in the "spec" section they  will
+be created as clusterIP
+
+
+
+
+vim voting-app-service.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-service
+  labels:
+    name: voting-app-service
+    author: intelliqit
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: voting-app-pod
+    app: demo-voting-app
+...
+
+vim result-app-service.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: result-app-service
+  labels:
+    name: result-app-service
+    author: intelliqit
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: result-app-pod
+    app: demo-voting-app
+...
