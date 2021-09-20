@@ -1,3 +1,4 @@
+![voting](https://user-images.githubusercontent.com/87182167/134034743-229d65be-f64c-41fc-8cb4-e2f0389129f1.png)
 # Kubernettes
 # Kubernetes (K8s)
 
